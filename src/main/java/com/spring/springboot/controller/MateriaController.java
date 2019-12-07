@@ -49,7 +49,7 @@ public class MateriaController {
 		return materiaService.updateMateria(materiaID, materiaDetails);
 	}
 
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/materia/{id}")
 	public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long materiaId) throws ResourceNotFoundException {
 		return materiaService.deleteMateria(materiaId);
 	}

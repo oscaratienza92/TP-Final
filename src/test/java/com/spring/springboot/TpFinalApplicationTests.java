@@ -18,7 +18,7 @@ class TpFinalApplicationTests {
 	
 	@Test
 	public void testGetCurso() {
-		assert (cursoService.getAllUsers()) != null;
+		assert (cursoService.getAllCursos()) != null;
 	}
 	
 	@Test

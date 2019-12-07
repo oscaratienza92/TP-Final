@@ -49,7 +49,7 @@ public class ExamenController {
 		return examenService.updateExamen(examenID, examenDetails);
 	}
 
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/examen/{id}")
 	public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long examenId) throws ResourceNotFoundException {
 		return examenService.deleteExamen(examenId);
 	}
