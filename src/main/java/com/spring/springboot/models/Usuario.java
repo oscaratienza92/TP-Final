@@ -31,7 +31,7 @@ public class Usuario {
 	@Column(name = "password")
 	private String password;
 	
-	@OneToMany
+	@ManyToMany
 	@JoinColumn(name="usuario_id")
 	private Set<Materia> idMateria;
 	
