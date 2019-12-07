@@ -1,5 +1,7 @@
 package com.spring.springboot.models;
 
+import java.util.Set;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -26,9 +28,13 @@ public class Usuario {
 	private String email;
 
 	@NotNull(message = "no puede estar vacio")
-	@Column(name = "contraseña")
-	private String contraseña;
-
+	@Column(name = "password")
+	private String password;
+	
+	@OneToMany
+	@JoinColumn(name="usuario_id")
+	private Set<Materia> idMateria;
+	
 	public Usuario() {
 	}
 
@@ -40,7 +46,7 @@ public class Usuario {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
-		this.contraseña = contraseña;
+		this.password = contraseña;
 	}
 
 	public Long getIdUsuario() {
@@ -84,11 +90,19 @@ public class Usuario {
 	}
 
 	public String getContraseña() {
-		return contraseña;
+		return password;
 	}
 
 	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+		this.password = contraseña;
+	}
+	
+	public Set<Materia> getIdMateria() {
+		return idMateria;
+	}
+
+	public void setIdMateria(Set<Materia> idMateria) {
+		this.idMateria = idMateria;
 	}
 
 }

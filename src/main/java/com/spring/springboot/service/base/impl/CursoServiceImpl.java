@@ -27,8 +27,8 @@ public class CursoServiceImpl implements CursoService {
 	}
 
 	@Override
-	public List<Curso> getAllUsers() {
-		return cursoDAOImpl.getAllUsers();		
+	public List<Curso> getAllCursos() {
+		return cursoDAOImpl.getAllCursos();		
 	}
 	
 	@Override
@@ -46,40 +46,5 @@ public class CursoServiceImpl implements CursoService {
 		return cursoDAOImpl.deleteCurso(cursoId);
 	}
 
-	@Override
-	public void borrar(int id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void actualizar(Curso curso) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Curso getPorId(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Curso> getPorNombre(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Curso> getTodas() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void borrar(Curso Curso) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

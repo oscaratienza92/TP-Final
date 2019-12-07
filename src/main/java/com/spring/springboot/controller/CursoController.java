@@ -28,8 +28,8 @@ public class CursoController {
 	CursoService cursoService;
 
 	@GetMapping("/curso")
-	public List<Curso> getAllUsers() {
-		return cursoService.getAllUsers();
+	public List<Curso> getAllCursos() {
+		return cursoService.getAllCursos();
 	}
 
 	@PostMapping("/curso")
@@ -38,19 +38,19 @@ public class CursoController {
 	}
 
 	@GetMapping("/curso/{id}")
-	public ResponseEntity<Curso> getUserById(@PathVariable(value = "id") Long cursoID)
+	public ResponseEntity<Curso> getCursoById(@PathVariable(value = "id") Long cursoID)
 			throws ResourceNotFoundException {
 		return cursoService.getCursoById(cursoID);
 	}
 
 	@PutMapping("/curso/{id}")
-	public ResponseEntity<Curso> updateUser(@PathVariable(value = "id") Long cursoID,
+	public ResponseEntity<Curso> updateCurso(@PathVariable(value = "id") Long cursoID,
 			@Valid @RequestBody Curso cursoDetails) throws ResourceNotFoundException {
 		return cursoService.updateCurso(cursoID, cursoDetails);
 	}
 
 	@DeleteMapping("/users/{id}")
-	public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long cursoId) throws ResourceNotFoundException {
+	public Map<String, Boolean> deleteCurso(@PathVariable(value = "id") Long cursoId) throws ResourceNotFoundException {
 		return cursoService.deleteCurso(cursoId);
 	}
 

@@ -24,7 +24,7 @@ public class CursoDAOImpl {
 		return cursoDAO.save(curso);
 	}
 	
-	public List<Curso> getAllUsers() {
+	public List<Curso> getAllCursos() {
 		return cursoDAO.findAll();
 	}
 	
