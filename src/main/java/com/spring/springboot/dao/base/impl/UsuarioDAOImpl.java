@@ -17,20 +17,20 @@ import java.util.Map;
 
 public class UsuarioDAOImpl {
     @Autowired
-    private UsuarioDAO UsuarioDAO;
+    private UsuarioDAO usuarioDAO;
 
     public Usuario createUsuario(@Valid @RequestBody Usuario usuario) {
-        return UsuarioDAO.save(usuario);
+        return usuarioDAO.save(usuario);
     }
 
     public List<Usuario> getAllUsuario() {
 
-        return UsuarioDAO.findAll();
+        return usuarioDAO.findAll();
     }
 
     public ResponseEntity<Usuario> getUsuarioById(
             @PathVariable(value = "id") Long usuarioId) throws ResourceNotFoundException {
-        Usuario usuario = UsuarioDAO.findById(usuarioId)
+        Usuario usuario = usuarioDAO.findById(usuarioId)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado: " + usuarioId));
         return ResponseEntity.ok().body(usuario);
     }
@@ -39,7 +39,7 @@ public class UsuarioDAOImpl {
     public ResponseEntity<Usuario> updateUsuario(
             @PathVariable(value = "id") Long usuarioId,
             @Valid @RequestBody Usuario usuarioDetails) throws ResourceNotFoundException {
-        Usuario usuario = UsuarioDAO.findById(usuarioId)
+        Usuario usuario = usuarioDAO.findById(usuarioId)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado: " + usuarioId));
 
 
@@ -49,18 +49,22 @@ public class UsuarioDAOImpl {
         usuario.setEmail(usuarioDetails.getEmail());
         usuario.setIdRol(usuarioDetails.getIdRol());
 
-        final Usuario updatedUsuario = UsuarioDAO.save(usuario);
+        final Usuario updatedUsuario = usuarioDAO.save(usuario);
         return ResponseEntity.ok(updatedUsuario);
     }
 
     public Map<String, Boolean> deleteUsuario(
             @PathVariable(value = "id") Long usuarioId) throws ResourceNotFoundException {
-        Usuario usuario = UsuarioDAO.findById(usuarioId)
+        Usuario usuario = usuarioDAO.findById(usuarioId)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado: " + usuarioId));
 
-        UsuarioDAO.delete(usuario);
+        usuarioDAO.delete(usuario);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
     }
+    
+	public Usuario findByUsuario(String usuario) {
+		return usuarioDAO.findByUsername(usuario);
+	}
 }

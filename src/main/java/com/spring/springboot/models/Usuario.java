@@ -12,9 +12,12 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUsuario;
 
-	@OneToOne
-	@JoinColumn(name = "rol")
-	private Rol idRol;
+	@ManyToMany
+	@JoinColumn(name = "usuario_rol")
+	private Set<Rol>  idRol;
+	
+	@Column(name = "username")
+	private String username;
 
 	@NotNull(message = "no puede estar vacio")
 	@Column(name = "nombre")
@@ -35,18 +38,9 @@ public class Usuario {
 	@JoinColumn(name="usuario_id")
 	private Set<Materia> idMateria;
 	
+	private Boolean enabled;
+	
 	public Usuario() {
-	}
-
-	public Usuario(Long idUsuario, Rol idRol, @NotNull(message = "no puede estar vacio") String nombre,
-			@NotNull(message = "no puede estar vacio") String apellido, String email,
-			@NotNull(message = "no puede estar vacio") String contraseña) {
-		this.idUsuario = idUsuario;
-		this.idRol = idRol;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.password = contraseña;
 	}
 
 	public Long getIdUsuario() {
@@ -57,11 +51,11 @@ public class Usuario {
 		this.idUsuario = idUsuario;
 	}
 
-	public Rol getIdRol() {
+	public Set<Rol> getIdRol() {
 		return idRol;
 	}
 
-	public void setIdRol(Rol idRol) {
+	public void setIdRol(Set<Rol> idRol) {
 		this.idRol = idRol;
 	}
 
@@ -103,6 +97,30 @@ public class Usuario {
 
 	public void setIdMateria(Set<Materia> idMateria) {
 		this.idMateria = idMateria;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 }
